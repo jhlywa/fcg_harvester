@@ -54,8 +54,8 @@ options = {
 
 # parse the command line parameters
 optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: fcg_harvester.rb [options] [file]"
-  opts.on('-g NUMBER', Integer, 'Specifies the number of games to capture (default 1).') do |games|
+  opts.banner = "Usage: fcg_harvester.rb [options]"
+  opts.on('-g NUMBER', Integer, 'Specifies the number of games to harvest (default 1).') do |games|
     options[:games] = games
   end
 

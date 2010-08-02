@@ -2,8 +2,8 @@ FICS Chess Game Harvester (fcg_harvester.rb)
 
 This ruby script can be used to harvest recently completed games from the Free Internet Chess Server (freechess.org).  All games are output to stdout in Portable Game Notation (PGN) format.
 
-Usage: fcg_harvester.rb [options] [file]
-    -g NUMBER                        Specifies the number of games to capture (default 1).
+Usage: fcg_harvester.rb [options]
+    -g NUMBER                        Specifies the number of games to harvest (default 1).
     -h, --help                       Show this message.
 
 $ fcg_harvester.rb
