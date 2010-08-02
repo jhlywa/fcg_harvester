@@ -58,7 +58,7 @@ optparse = OptionParser.new do |opts|
   opts.banner = "Usage: fcg_harvester.rb [options] [file]"
   opts.separator ""
   opts.separator "Options:"
-  opts.on('-g NUMBER', Integer, 'Specifies the number of games to harvest (default 1).') do |games|
+  opts.on('-n NUMBER', Integer, 'Specifies the number of games to harvest (default 1).') do |games|
     options[:games] = games
   end
 
@@ -69,7 +69,7 @@ optparse = OptionParser.new do |opts|
   opts.separator ""
   opts.separator "This script connects to the Free Internet Chess Server (freechess.org) and"
   opts.separator "downloads chess games as they complete.   All games are printed to stdout if"
-  opts.separator "called without an output filename."
+  opts.separator "called without a filename argument."
   opts.separator ""
 end
 

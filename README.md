@@ -4,14 +4,14 @@ FICS Chess Game Harvester
 This script connects to the Free Integer Chess Server (freechess.org)
 and downloads games as they complete.  All games are output in Portable
 Game Notation format (http://en.wikipedia.org/wiki/Pgn).  Games will be
-output to stdout if called without an output filename.
+output to stdout if called without a filename argument.
 
 Usage
 -----
     Usage: fcg_harvester.rb [options] [file]
 
     Options:
-        -g NUMBER        Specifies the number of games to harvest (default 1).
+        -n NUMBER        Specifies the number of games to harvest (default 1).
         -h, --help       Show this help message and exit.
 
 Example
