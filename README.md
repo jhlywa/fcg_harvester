@@ -1,7 +1,7 @@
 FICS Chess Game Harvester
 =========================
 
-This script connects to the Free Integer Chess Server (freechess.org)
+This script connects to the Free Internet Chess Server (freechess.org)
 and downloads games as they complete.  All games are output in Portable
 Game Notation format (http://en.wikipedia.org/wiki/Pgn).  Games will be
 output to stdout if called without a filename argument.
