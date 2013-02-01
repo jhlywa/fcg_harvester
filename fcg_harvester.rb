@@ -28,7 +28,7 @@ class PGN
 
   def moves_to_s
     # stringify the move list while inserting a newline every 7th move
-    @moves.enum_with_index.map { |m, i| (i > 0 && i % 6 == 0) ? "#{m}\n" : "#{m} " }
+    @moves.each_with_index.map { |m, i| (i > 0 && i % 6 == 0) ? "#{m}\n" : "#{m} " }.join
   end
 
   def to_s
