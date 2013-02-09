@@ -46,7 +46,7 @@ class PGN
   end
 end
 
-options = { 
+options = {
   :games => 1,
   :types => %[blitz standard lightning],
   :filter => [],
@@ -113,8 +113,11 @@ full_move = /^(\d+)\.\s+([^\s]+)\s+\(\d+:\d+\)\s+([^\s]+)\s+\(\d+:\d+\)$/
 # 55.  a7      (0:01)
 half_move = /^(\d+)\.\s+([^\s]+)\s+\(\d+:\d+\)$/
 
-# {Black resigns} 1-0
-result = /^(\{[^G].*\})\s+(.*)/
+# {Black resigns} 1-0, or {Game drawn by mutual agreement} 1/2-1/2
+result = /^(\{.*\})\s+(.*)/
+# but not {Game 293 (GuestPKWS vs. socratez) socratez resigns}
+notice = /^(\{Game \d+ .*)/
+
 
 socket = TCPSocket.new(HOST, PORT)
 
@@ -158,7 +161,7 @@ while 1
     pgn << "#{$1}. #{$2} #{$3}"
   elsif line =~ half_move
     pgn << "#{$1}. #{$2}"
-  elsif line =~ result
+  elsif line !~ notice and line =~ result
     pgn.long_result = $1;
     pgn.short_result = $2;
     if options[:types].include?(pgn.game)
