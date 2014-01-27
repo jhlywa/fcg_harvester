@@ -15,7 +15,8 @@ Options:
 ```
 
 ## Example
-Calling the script with no arguments returns one game:
+Calling the script with no arguments returns one game (you may need to wait
+a few seconds for a game to complete):
 ```
 $ fcg_harvester.rb
 [Event "FICS rated blitz game"]
