@@ -55,7 +55,7 @@ options = {
 # parse the command line parameters
 optparse = OptionParser.new do |opts|
   opts.summary_width = 16
-  opts.banner = "Usage: fcg_harvester.rb [options] [file]"
+  opts.banner = "Usage: fcg_harvester.rb [options]"
   opts.separator ""
   opts.separator "Options:"
   opts.on('-n NUMBER', Integer, 'Specifies the number of games to harvest (default 1).') do |games|
@@ -68,8 +68,7 @@ optparse = OptionParser.new do |opts|
   end
   opts.separator ""
   opts.separator "This script connects to the Free Internet Chess Server (freechess.org) and"
-  opts.separator "downloads chess games as they complete.   All games are printed to stdout if"
-  opts.separator "called without a filename argument."
+  opts.separator "downloads chess games as they complete.   All games are written to stdout"
   opts.separator ""
 end
 
@@ -80,13 +79,6 @@ rescue OptionParser::ParseError
   puts $!
   puts optparse
   exit
-end
-
-# optparse mucks with ARGV, so read the output filename after the call to
-# optparse.parse!
-options[:filename] = ARGV[0]
-if options[:filename]
-  file = File.new(options[:filename], 'w')
 end
 
 # these are the FICS end of game notices
@@ -166,22 +158,17 @@ while 1
     pgn.short_result = $2;
     if options[:types].include?(pgn.game)
       # output the game
-      if options[:filename]
-          file.syswrite(pgn)
-      else
-        puts pgn
-      end
+      puts pgn
 
       # dec the game counter
       options[:games] -= 1
       if options[:games] == 0
-        file.close if options[:filename]
         socket.close
         exit
       end
     end
   end
 
-end 
+end
 
 
